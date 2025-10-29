@@ -6,3 +6,4 @@ Tổng hợp các bài lab học tập và thử nghiệm về An ninh mạng, S
 #Thông tin
 Tác giả: Nguyễn Bảo Quang - Đại học Thủy Lợi
 Mục tiêu: Học tập, mô phỏng mô hình SOC, SIEM
+Công cụ chính: Suricata, ELK Stack, Splunk,...
