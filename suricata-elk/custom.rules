@@ -1,0 +1,41 @@
+############################
+# CUSTOM RULES FOR LAB / TEST
+# Author: Nguyen Bao Quang - Thuyloi University
+# Description: Simple custom Suricata rules for lab/demo
+# File: /var/lib/suricata/rules/custom.rules
+############################
+
+# 1. ICMP: Ping detected
+alert icmp any any -> any any (msg:"[CUSTOM] ICMP Ping detected"; sid:1000001; rev:1;)
+
+# 2-4. TCP: Connection to common ports (HTTP, SSH)
+alert tcp any any -> any 22 (msg:"[CUSTOM] SSH connection detected"; sid:1000002; rev:1;)
+alert tcp any any -> any 80 (msg:"[CUSTOM] HTTP connection detected"; sid:1000003; rev:1;)
+alert tcp any any -> any 443 (msg:"[CUSTOM] HTTPS connection detected"; sid:1000004; rev:1;)
+
+# 5. UDP: DNS query
+alert udp any any -> any 53 (msg:"[CUSTOM] DNS query detected"; sid:1000005; rev:1;)
+
+# 6. HTTP: Simple GET request detection
+alert http any any -> any any (msg:"[CUSTOM] HTTP GET request"; http.method; content:"GET"; sid:1000006; rev:1;)
+
+# 7. Detect specific string in traffic
+alert tcp any any -> any any (msg:"[CUSTOM] Test string detected"; content:"teststring"; sid:1000007; rev:1;)
+
+# 8. Detect large ICMP floods (simple rate limit example)
+alert icmp any any -> any any (msg:"[CUSTOM] ICMP flood suspect"; threshold:type both, track by_src, count 10, seconds 5; sid:1000008; rev:1;)
+
+This custom rule set is designed for learning and demonstration purposes in the Suricata + ELK Stack lab.
+It aims to detect common types of traffic and simple anomalies:
+
+Rule #1 (ICMP) — Detects ICMP echo requests/replies (pings).
+
+Rule #2–4 (TCP) — Detects connections to common service ports (SSH, HTTP, HTTPS).
+
+Rule #5 (UDP) — Detects DNS queries on UDP/53.
+
+Rule #6 (HTTP) — Detects HTTP GET requests using HTTP method inspection.
+
+Rule #7 (Test String) — A test rule to trigger alerts by sending a custom string (teststring).
+
+Rule #8 (ICMP flood) — Demonstrates Suricata’s thresholding feature to rate-limit alerts for possible ping floods.
