@@ -25,17 +25,14 @@ alert tcp any any -> any any (msg:"[CUSTOM] Test string detected"; content:"test
 # 8. Detect large ICMP floods (simple rate limit example)
 alert icmp any any -> any any (msg:"[CUSTOM] ICMP flood suspect"; threshold:type both, track by_src, count 10, seconds 5; sid:1000008; rev:1;)
 
-This custom rule set is designed for learning and demonstration purposes in the Suricata + ELK Stack lab.
-It aims to detect common types of traffic and simple anomalies:
+Rule #1 (ICMP): phát hiện các gói tin ping (echo request/reply).
 
-Rule #1 (ICMP) — Detects ICMP echo requests/replies (pings).
+Rule #2–4 (TCP): phát hiện kết nối tới các cổng phổ biến như SSH (22), HTTP (80), HTTPS (443).
 
-Rule #2–4 (TCP) — Detects connections to common service ports (SSH, HTTP, HTTPS).
+Rule #5 (UDP): nhận diện truy vấn DNS (cổng 53).
 
-Rule #5 (UDP) — Detects DNS queries on UDP/53.
+Rule #6 (HTTP): phát hiện các yêu cầu HTTP GET trong lưu lượng web.
 
-Rule #6 (HTTP) — Detects HTTP GET requests using HTTP method inspection.
+Rule #7 (Test String): cho phép người học kiểm tra nhanh rule bằng cách gửi chuỗi tùy ý (“teststring”).
 
-Rule #7 (Test String) — A test rule to trigger alerts by sending a custom string (teststring).
-
-Rule #8 (ICMP flood) — Demonstrates Suricata’s thresholding feature to rate-limit alerts for possible ping floods.
+Rule #8 (ICMP flood): minh họa cách sử dụng threshold để giới hạn tần suất cảnh báo khi phát hiện hành vi ping flood (ICMP quá nhiều trong thời gian ngắn).
