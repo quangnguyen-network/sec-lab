@@ -1,5 +1,5 @@
 # Suricata + ELK Stack Lab
-**Tác giả:** Nguyễn Bảo Quang — ĐH Thủy Lợi
+**Tác giả:** Nguyễn Bảo Quang
 
 ## Mục tiêu
 Triển khai mô hình giám sát mạng: **Suricata (IDS)** → **Filebeat** → **Elasticsearch** → **Kibana** để minh họa pipeline SIEM và viết rule tùy chỉnh.
