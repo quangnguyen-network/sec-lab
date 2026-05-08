@@ -1,6 +1,6 @@
 ############################
 # CUSTOM RULES FOR LAB / TEST
-# Author: Nguyen Bao Quang - Thuyloi University
+# Author: Nguyen Bao Quang 
 # Description: Simple custom Suricata rules for lab/demo
 # File: /var/lib/suricata/rules/custom.rules
 ############################
